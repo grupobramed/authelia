@@ -76,6 +76,7 @@ const SettingsLayout = function (props: Props) {
                 {navItems.map((item) => (
                     <DrawerNavItem
                         key={item.keyname}
+                        keyname={item.keyname}
                         text={translate(item.text)}
                         pathname={item.pathname}
                         icon={item.icon}
@@ -90,6 +91,7 @@ const SettingsLayout = function (props: Props) {
             <AppBar component={"nav"}>
                 <Toolbar>
                     <IconButton
+                        id={"settings-menu"}
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
@@ -134,7 +136,7 @@ const SettingsLayout = function (props: Props) {
 };
 
 interface NavItem {
-    keyname?: string;
+    keyname: string;
     text: string;
     pathname: string;
     icon?: ReactNode;
@@ -164,7 +166,7 @@ const DrawerNavItem = function (props: NavItem) {
     }, [navigate, props, selected]);
 
     return (
-        <ListItem disablePadding onClick={handleOnClick}>
+        <ListItem disablePadding onClick={handleOnClick} id={`settings-menu-${props.keyname}`}>
             <ListItemButton selected={selected}>
                 {props.icon ? <ListItemIcon>{props.icon}</ListItemIcon> : null}
                 <ListItemText primary={props.text} />

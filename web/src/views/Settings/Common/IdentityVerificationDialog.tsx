@@ -145,7 +145,7 @@ const IdentityVerificationDialog = function (props: Props) {
     };
 
     return (
-        <Dialog open={open} onClose={handleCancelled}>
+        <Dialog open={open} onClose={handleCancelled} id={"dialog-one-time-code"}>
             <DialogTitle>{translate("Identity Verification")}</DialogTitle>
             {success ? (
                 <DialogContent>
